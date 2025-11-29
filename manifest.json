@@ -1,8 +1,12 @@
 {
   "display_name": "AI Long-Term Journal & Preferences",
+  "loading_order": 800,
+  "requires": [],
+  "optional": [],
   "js": "index.js",
   "author": "V",
   "version": "0.1.0",
-  "description": "Lets the AI log significant memories and user preferences using /memory and /prefrences commands. Includes a UI to view and manage these logs.",
-  "minimum_client_version": "1.0.0"
+  "description": "Lets the AI log significant memories and user preferences using /memory and /preferences commands. Includes a UI to view and manage these logs.",
+  "homePage": "https://github.com/vegalyraevt/sillytavern-memory-extension",
+  "auto_update": true
 }
