@@ -105,18 +105,26 @@ function addSettingsPanel() {
 }
 
 
-(function() {
+
+export async function init() {
     loadSettings();
     hookAIResponses();
-    addMenuButton();
-    // Try to register settings panel after app is ready
-    if (window.SillyTavern && window.SillyTavern.eventSource) {
-        window.SillyTavern.eventSource.on('APP_READY', addSettingsPanel);
+    // Wait for DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            addMenuButton();
+        });
     } else {
-        setTimeout(() => {
-            if (window.SillyTavern && window.SillyTavern.eventSource) {
-                window.SillyTavern.eventSource.on('APP_READY', addSettingsPanel);
-            }
-        }, 2000);
+        addMenuButton();
     }
-})();
+    // Register settings panel if available
+    if (window.SillyTavern && window.SillyTavern.registerExtensionPanel) {
+        window.SillyTavern.registerExtensionPanel({
+            id: 'sillytavern-memory-extension',
+            name: 'AI Journal & Preferences',
+            render: renderPanel,
+            open: openPanel,
+            close: closePanel
+        });
+    }
+}
