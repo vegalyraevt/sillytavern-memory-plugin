@@ -118,7 +118,7 @@ function hookAIResponses() {
 
 
 
-export async function init() {
+(function () {
     loadSettings();
     hookAIResponses();
     // Wait for DOM ready
@@ -129,4 +129,4 @@ export async function init() {
     } else {
         addExtensionSettings();
     }
-}
+})();
