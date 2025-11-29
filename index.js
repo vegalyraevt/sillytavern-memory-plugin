@@ -6,10 +6,12 @@ let extensionSettings = {
     memories: []
 };
 
+
 function saveSettings() {
     SillyTavern.getContext().extensionSettings['sillytavern-memory-extension'] = extensionSettings;
     SillyTavern.getContext().saveSettingsDebounced();
 }
+
 
 function loadSettings() {
     const ctx = SillyTavern.getContext();
